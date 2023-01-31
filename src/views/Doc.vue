@@ -25,27 +25,23 @@
 </template>
 
 <script lang="ts">
-import TopNav from "../components/TopNav.vue"
-import {inject, Ref} from "vue"
+import TopNav from "../components/TopNav.vue";
+import { inject, Ref } from "vue";
 
 export default {
   name: "Doc",
-  components: {TopNav},
+  components: { TopNav },
   setup() {
-    const asideVisible = inject<Ref<boolean>>('asideVisible')
-    return {asideVisible}
-  }
-}
+    const asideVisible = inject<Ref<boolean>>("asideVisible");
+    return { asideVisible };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 aside {
   background: lightblue;
   width: 150px;
-  padding: 70px 16px 16px;
-  position: fixed;
-  top: 0;
-  left: 0;
 
   > h2 {
     margin-bottom: 4px;
@@ -55,6 +51,13 @@ aside {
     > li {
       padding: 4px 0;
     }
+  }
+
+  @media (max-width: 500px) {
+    padding: 70px 16px 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 }
 </style>
