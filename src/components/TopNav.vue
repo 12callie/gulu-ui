@@ -5,7 +5,7 @@
         <use xlink:href="#icon-menu"></use>
       </svg>
     </div>
-    <div class="logo">LOGO</div>
+    <router-link to="/" class="logo">LOGO</router-link>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -33,7 +33,10 @@ export default {
   background: pink;
   display: flex;
   padding: 16px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 10;
 
   > .toggleAside {
@@ -47,6 +50,10 @@ export default {
   > .logo {
     max-width: 6em;
     margin-right: auto;
+
+    &:hover {
+      border: none;
+    }
   }
 
   > .menu {

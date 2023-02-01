@@ -42,6 +42,10 @@ export default {
       line-height: $h;
       border-radius: $h/2;
       padding: 0 8px;
+
+      &:hover {
+        border: none;
+      }
     }
   }
 }
