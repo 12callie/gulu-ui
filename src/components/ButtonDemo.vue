@@ -2,7 +2,9 @@
   <div>Button示例</div>
   <h1>示例1</h1>
   <div>
-    <Button>你好</Button>
+    <Button id="xxx" @click="onClick" @focus="onClick" @mouseover="onClick"
+      >你好
+    </Button>
   </div>
 </template>
 
@@ -13,6 +15,12 @@ export default {
   name: "ButtonDemo",
   components: {
     Button,
+  },
+  setup() {
+    const onClick = () => {
+      console.log("hello");
+    };
+    return { onClick };
   },
 };
 </script>
