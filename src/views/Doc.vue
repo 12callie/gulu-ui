@@ -66,6 +66,7 @@ export default {
       flex-shrink: 0;
       padding: 70px 16px 16px;
       position: fixed;
+      z-index: 1;
       top: 0;
       left: 0;
       height: 100%;
