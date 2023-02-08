@@ -1,5 +1,8 @@
 <template>
-  <button class="gulu-button" :class="{ [`gulu-theme-${theme}`]: theme }">
+  <button
+    class="gulu-button"
+    :class="{ [`gulu-button-theme-${theme}`]: theme }"
+  >
     <slot />
   </button>
 </template>
@@ -19,7 +22,6 @@ export default {
 <style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
-$color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 .gulu-button {
@@ -31,7 +33,6 @@ $radius: 4px;
   align-items: center;
   white-space: nowrap;
   background: white;
-  color: $color;
   border: 1px solid $border-color;
   border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
@@ -52,6 +53,28 @@ $radius: 4px;
 
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &.gulu-button-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+
+    &:hover,
+    &:focus {
+      background: rgb(250, 250, 250);
+    }
+  }
+
+  &.gulu-button-theme-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+
+    &:hover,
+    &:focus {
+      color: lighten($blue, 10%);
+    }
   }
 }
 </style>
