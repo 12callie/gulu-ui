@@ -9,19 +9,39 @@
   </div>
   <h1>示例2</h1>
   <div>
-    <Button size="large">Large</Button>
-    <Button size="normal">Default</Button>
-    <Button size="small">Small</Button>
+    <div>
+      <Button size="large">大</Button>
+      <Button size="normal">常规</Button>
+      <Button size="small">小</Button>
+    </div>
+    <div>
+      <Button theme="text" size="large">大</Button>
+      <Button theme="text">常规</Button>
+      <Button theme="text" size="small">小</Button>
+    </div>
+    <div>
+      <Button theme="link" size="large">大</Button>
+      <Button theme="link">常规</Button>
+      <Button theme="link" size="small">小</Button>
+    </div>
   </div>
+  <h1>示例3</h1>
   <div>
-    <Button theme="text" size="large">Large</Button>
-    <Button theme="text">Default</Button>
-    <Button theme="text" size="small">Small</Button>
-  </div>
-  <div>
-    <Button theme="link" size="large">Large</Button>
-    <Button theme="link">Default</Button>
-    <Button theme="link" size="small">Small</Button>
+    <div>
+      <Button level="main">主要按钮</Button>
+      <Button>普通按钮</Button>
+      <Button level="danger">危险按钮</Button>
+    </div>
+    <div>
+      <Button theme="text" level="main">主要文字按钮</Button>
+      <Button theme="text">普通文字按钮</Button>
+      <Button theme="text" level="danger">危险文字按钮</Button>
+    </div>
+    <div>
+      <Button theme="link" level="main">主要链接按钮</Button>
+      <Button theme="link">普通链接按钮</Button>
+      <Button theme="link" level="danger">危险链接按钮</Button>
+    </div>
   </div>
 </template>
 
