@@ -1,13 +1,12 @@
 <template>
-  <button
-    class="gulu-button"
-    :class="{ [`gulu-button-theme-${theme}`]: theme }"
-  >
+  <button class="gulu-button" :class="classes">
     <slot />
   </button>
 </template>
 
 <script lang="ts">
+import { computed } from "vue";
+
 export default {
   name: "Button",
   props: {
@@ -15,6 +14,19 @@ export default {
       type: String,
       default: "button",
     },
+    size: {
+      type: String,
+      default: "normal",
+    },
+  },
+  setup(props) {
+    const classes = computed(() => {
+      return {
+        [`gulu-button-theme-${props.theme}`]: props.theme,
+        [`gulu-button-size-${props.size}`]: props.size,
+      };
+    });
+    return { classes };
   },
 };
 </script>
@@ -75,6 +87,18 @@ $radius: 4px;
     &:focus {
       color: lighten($blue, 10%);
     }
+  }
+
+  &.gulu-button-size-large {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  &.gulu-button-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
   }
 }
 </style>
