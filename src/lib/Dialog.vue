@@ -1,25 +1,27 @@
 <template>
   <template v-if="visible">
-    <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="gulu-dialog-wrapper">
-      <div class="gulu-dialog">
-        <header>
-          <slot name="title" />
-          <span class="gulu-dialog-close" @click="close">
-            <svg class="icon">
-              <use xlink:href="#icon-close"></use>
-            </svg>
-          </span>
-        </header>
-        <main>
-          <slot name="content" />
-        </main>
-        <footer>
-          <Button @click="cancel">取消</Button>
-          <Button level="main" @click="ok">确定</Button>
-        </footer>
+    <teleport to="body">
+      <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
+      <div class="gulu-dialog-wrapper">
+        <div class="gulu-dialog">
+          <header>
+            <slot name="title" />
+            <span class="gulu-dialog-close" @click="close">
+              <svg class="icon">
+                <use xlink:href="#icon-close"></use>
+              </svg>
+            </span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button @click="cancel">取消</Button>
+            <Button level="main" @click="ok">确定</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </teleport>
   </template>
 </template>
 
