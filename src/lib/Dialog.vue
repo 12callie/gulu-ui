@@ -1,25 +1,27 @@
 <template>
-  <div class="gulu-dialog-overlay"></div>
-  <div class="gulu-dialog-wrapper">
-    <div class="gulu-dialog">
-      <header>
-        标题
-        <span class="gulu-dialog-close">
-          <svg class="icon">
-            <use xlink:href="#icon-close"></use>
-          </svg>
-        </span>
-      </header>
-      <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
-      </main>
-      <footer>
-        <Button>取消</Button>
-        <Button level="main">确定</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
+    <div class="gulu-dialog-wrapper">
+      <div class="gulu-dialog">
+        <header>
+          标题
+          <span class="gulu-dialog-close" @click="close">
+            <svg class="icon">
+              <use xlink:href="#icon-close"></use>
+            </svg>
+          </span>
+        </header>
+        <main>
+          <p>第一行字</p>
+          <p>第二行字</p>
+        </main>
+        <footer>
+          <Button @click="cancel">取消</Button>
+          <Button level="main" @click="ok">确定</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script lang="ts">
@@ -29,6 +31,44 @@ export default {
   name: "Dialog",
   components: {
     Button,
+  },
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true,
+    },
+    ok: {
+      type: Function,
+    },
+    cancel: {
+      type: Function,
+    },
+  },
+  setup(props, context) {
+    const close = () => {
+      context.emit("update:visible", false);
+    };
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close();
+      }
+    };
+    console.log("ok", props.ok);
+    console.log("cancel", props.cancel);
+    const cancel = () => {
+      props.cancel?.();
+      close();
+    };
+    const ok = () => {
+      if (props.ok?.() !== false) {
+        close();
+      }
+    };
+    return { close, onClickOverlay, cancel, ok };
   },
 };
 </script>
