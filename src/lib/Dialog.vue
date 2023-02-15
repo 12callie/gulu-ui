@@ -24,7 +24,6 @@
     </teleport>
   </template>
 </template>
-
 <script lang="ts">
 import Button from "./Button.vue";
 
