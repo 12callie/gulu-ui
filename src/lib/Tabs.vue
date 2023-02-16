@@ -14,9 +14,8 @@
     <div class="gulu-tabs-content">
       <component
         class="gulu-tabs-content-item"
-        v-for="(c, index) in defaults"
-        :key="index"
-        :is="c"
+        :is="current"
+        :key="current.props.title"
       />
     </div>
   </div>
@@ -24,6 +23,7 @@
 
 <script lang="ts">
 import Tab from "./Tab.vue";
+import { computed } from "vue";
 
 export default {
   name: "Tabs",
@@ -42,10 +42,15 @@ export default {
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
+    const current = computed(() => {
+      return defaults.find((tag) => {
+        return tag.props.title === props.selected;
+      });
+    });
     const selectTitle = (title: string) => {
       context.emit("update:selected", title);
     };
-    return { defaults, titles, selectTitle };
+    return { defaults, titles, current, selectTitle };
   },
 };
 </script>
