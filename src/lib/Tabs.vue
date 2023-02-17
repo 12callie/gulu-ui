@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import Tab from "./Tab.vue";
-import { computed, ref, onMounted, onUpdated } from "vue";
+import { computed, ref, watchPostEffect } from "vue";
 
 export default {
   name: "Tabs",
@@ -42,16 +42,14 @@ export default {
     const currentItem = ref<HTMLDivElement>(null);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
-    const x = () => {
+    watchPostEffect(() => {
       const { width } = currentItem.value.getBoundingClientRect();
       indicator.value.style.width = width + "px";
       const { left: left1 } = container.value.getBoundingClientRect();
       const { left: left2 } = currentItem.value.getBoundingClientRect();
       const left = left2 - left1;
       indicator.value.style.left = left + "px";
-    };
-    onMounted(x);
-    onUpdated(x);
+    });
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
