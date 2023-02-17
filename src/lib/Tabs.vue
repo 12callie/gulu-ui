@@ -9,7 +9,7 @@
         :key="index"
         :ref="
           (el) => {
-            if (el) navItems[index] = el;
+            if (t === selected) currentItem = el;
           }
         "
       >
@@ -39,16 +39,14 @@ export default {
     },
   },
   setup(props, context) {
-    const navItems = ref<HTMLDivElement[]>([]);
+    const currentItem = ref<HTMLDivElement>(null);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
     const x = () => {
-      const divs = navItems.value;
-      const result = divs.find((div) => div.classList.contains("selected"));
-      const { width } = result.getBoundingClientRect();
+      const { width } = currentItem.value.getBoundingClientRect();
       indicator.value.style.width = width + "px";
       const { left: left1 } = container.value.getBoundingClientRect();
-      const { left: left2 } = result.getBoundingClientRect();
+      const { left: left2 } = currentItem.value.getBoundingClientRect();
       const left = left2 - left1;
       indicator.value.style.left = left + "px";
     };
@@ -76,7 +74,7 @@ export default {
       titles,
       current,
       selectTitle,
-      navItems,
+      currentItem,
       indicator,
       container,
     };
