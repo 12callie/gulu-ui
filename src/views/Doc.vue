@@ -76,7 +76,7 @@ export default {
       background: lightblue;
       width: 150px;
       flex-shrink: 0;
-      padding: 70px 16px 16px;
+      padding: 70px 0 16px 0;
       position: fixed;
       z-index: 1;
       top: 0;
@@ -85,19 +85,21 @@ export default {
 
       > h2 {
         margin-bottom: 4px;
+        padding: 0 16px;
       }
 
       > ol {
         > li {
-          padding: 4px 0;
-        }
-      }
+          > a {
+            display: block;
+            padding: 4px 16px;
+            text-decoration: none;
 
-      @media (max-width: 500px) {
-        padding: 70px 16px 16px;
-        position: fixed;
-        top: 0;
-        left: 0;
+            &.router-link-active {
+              background: #fff;
+            }
+          }
+        }
       }
     }
 
