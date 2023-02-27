@@ -5,9 +5,9 @@
       <Component :is="component" />
     </div>
     <div class="demo-actions">
-      <Button>查看代码</Button>
+      <Button @click="toggleCode">查看代码</Button>
     </div>
-    <div class="demo-code">
+    <div class="demo-code" v-if="codeVisible">
       <pre class="language-css" v-html="html" />
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import Button from "../lib/Button.vue";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import Prism from "prismjs";
 
 export default {
@@ -27,6 +27,10 @@ export default {
   },
   components: { Button },
   setup(props) {
+    const codeVisible = ref(false);
+    const toggleCode = () => {
+      codeVisible.value = !codeVisible.value;
+    };
     const html = computed(() => {
       return Prism.highlight(
         props.component.__sourceCode,
@@ -34,7 +38,7 @@ export default {
         "html"
       );
     });
-    return { Prism, html };
+    return { Prism, html, codeVisible, toggleCode };
   },
 };
 </script>
