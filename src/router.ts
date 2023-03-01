@@ -6,9 +6,12 @@ import ButtonDemo from "./components/ButtonDemo.vue";
 import DialogDemo from "./components/DialogDemo.vue";
 import TabsDemo from "./components/TabsDemo.vue";
 import Markdown from "./components/Markdown.vue";
+import intro from "./markdown/intro.md";
+import getStarted from "./markdown/getStarted.md";
+import install from "./markdown/install.md";
 
-const md = (filename) => {
-  return h(Markdown, { path: `../markdown/${filename}.md`, key: filename });
+const md = (string) => {
+  return h(Markdown, { content: string, key: string });
 };
 
 import { h } from "vue";
@@ -26,15 +29,15 @@ export const router = createRouter({
 
         {
           path: "intro",
-          component: md("intro"),
+          component: md(intro),
         },
         {
           path: "get-started",
-          component: md("getStarted"),
+          component: md(getStarted),
         },
         {
           path: "install",
-          component: md("install"),
+          component: md(install),
         },
         { path: "switch", component: SwitchDemo },
         { path: "button", component: ButtonDemo },
