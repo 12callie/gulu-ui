@@ -4,8 +4,7 @@
 </template>
 
 <script lang="ts">
-import Button from "../lib/Button.vue";
-import { openDialog } from "../lib/openDialog";
+import { Button, openDialog } from "../lib/index";
 
 export default {
   components: {
@@ -14,14 +13,14 @@ export default {
   setup() {
     const showDialog = () => {
       openDialog({
-        title: "提示2",
-        content: "确定？2",
+        title: "提示",
+        content: "确定？",
         closeOnClickOverlay: false,
         ok: () => {
-          console.log("ok2");
+          console.log("ok");
         },
         cancel: () => {
-          console.log("cancel2");
+          console.log("cancel");
         },
       });
     };

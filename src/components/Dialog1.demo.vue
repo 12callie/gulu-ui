@@ -9,19 +9,18 @@
       :cancel="f2"
     >
       <template v-slot:content>
-        <strong>确定吗？1</strong>
-        <div>hi-hi</div>
+        <strong>确定吗？</strong>
+        <div>hi</div>
       </template>
       <template v-slot:title>
-        <strong>提示1</strong>
+        <strong>提示</strong>
       </template>
     </Dialog>
   </div>
 </template>
 
 <script lang="ts">
-import Dialog from "../lib/Dialog.vue";
-import Button from "../lib/Button.vue";
+import { Button, Dialog } from "../lib/index";
 import { ref } from "vue";
 
 export default {
@@ -35,11 +34,11 @@ export default {
       visible.value = !visible.value;
     };
     const f1 = () => {
-      console.log("ok1");
+      console.log("ok");
       return false;
     };
     const f2 = () => {
-      console.log("cancel1");
+      console.log("cancel");
     };
 
     return { visible, toggle, f1, f2 };
